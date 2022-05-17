@@ -17,6 +17,10 @@ public class OrderControllerV3 {
     @GetMapping("/v3/request")
     public String request(String itemId){
         // 너무 지저분한 코드 엄청난 수작업
+        // 핵심기능은 간단하지만 부가기능인 로그추적기때문에 코드가 복잡해짐
+        // -> 이 문제를 효율적으로 처리하기 위해서는?
+        // -> 변하는 부분(핵심기능)과 변하지 않는 부분(부가기능)을 분리하여 모듈화 한다.
+        // --> 동일한 패턴으로 템플릿 메소드를 만든다!!
         TraceStatus status = null;
         try{
             status = trace.begin("OrderController.request()");
