@@ -4,7 +4,6 @@ import hello.advanced.trace.template.code.AbstractTemplate;
 import hello.advanced.trace.template.code.SubClassLogin1;
 import hello.advanced.trace.template.code.SubClassLogin2;
 import lombok.extern.slf4j.Slf4j;
-import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 
 @Slf4j
@@ -43,5 +42,28 @@ public class TemplateMethodTest {
 
         AbstractTemplate template2 = new SubClassLogin2();
         template2.execute();
+    }
+
+    @Test
+    void templateMethodV2(){
+
+        AbstractTemplate template1 = new AbstractTemplate() {
+            @Override // 객체를 생성함과 동시에 구현체를 구현할 수 있다.
+            protected void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+        log.info("클래스 이름1={}", template1.getClass());
+        template1.execute();
+
+        AbstractTemplate template2 = new AbstractTemplate() {
+            @Override // 객체를 생성함과 동시에 구현체를 구현할 수 있다.
+            protected void call() {
+                log.info("비즈니스 로직1 실행");
+            }
+        };
+        log.info("클래스 이름2={}", template2.getClass());
+        template1.execute();
+
     }
 }
